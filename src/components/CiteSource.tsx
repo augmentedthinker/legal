@@ -108,7 +108,7 @@ export default function CiteSource() {
               Paste the text of a legal source below. This assistant will perform a <strong>structured extraction</strong> of metadata before generating a Bluebook citation in <strong>Practitioner Mode</strong>.
             </p>
             
-            <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 mb-6 flex gap-3 items-start">
+            <div className="bg-amber-50/88 backdrop-blur-sm border border-amber-100/80 rounded-xl p-4 mb-6 flex gap-3 items-start">
               <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
               <p className="text-sm text-amber-800">
                 <strong>Disclaimer:</strong> This tool is an automated assistant. Legal citations are complex and may contain errors. Please review all outputs against the official Bluebook and local court rules before filing.

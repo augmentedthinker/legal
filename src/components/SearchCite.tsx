@@ -46,22 +46,22 @@ export default function SearchCite() {
 
   return (
     <div className="max-w-5xl mx-auto space-y-8">
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
+      <div className="bg-white/76 backdrop-blur-md rounded-2xl shadow-[0_18px_50px_rgba(15,23,42,.14)] border border-white/55 p-6 md:p-8">
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-2xl font-semibold text-slate-900 flex items-center gap-2">
             <Search className="w-6 h-6 text-indigo-600" />
             Search & Cite
           </h2>
-          <div className="px-3 py-1 bg-slate-100 text-slate-600 rounded-lg text-xs font-bold uppercase tracking-wider">
+          <div className="px-3 py-1 bg-slate-100/85 text-slate-600 rounded-lg text-xs font-bold uppercase tracking-wider">
             Assistant Mode
           </div>
         </div>
-        
-        <p className="text-slate-600 mb-6">
+
+        <p className="text-slate-700 mb-6">
           Search for a legal topic, case name, or statute. The AI will find relevant sources and automatically format them using Bluebook <strong>Practitioner Mode</strong> rules for court filings.
         </p>
 
-        <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 mb-6 flex gap-3 items-start">
+        <div className="bg-amber-50/88 backdrop-blur-sm border border-amber-100/80 rounded-xl p-4 mb-6 flex gap-3 items-start">
           <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <p className="text-sm text-amber-800">
             <strong>Disclaimer:</strong> This tool is an automated assistant. Legal citations are complex and may contain errors. Please review all outputs against the official Bluebook and local court rules before filing.
@@ -70,7 +70,7 @@ export default function SearchCite() {
 
         <div className="flex justify-end mb-2">
           <button
-            onClick={() => setQuery("DC Security Breach Protection Amendment Act of 2019")}
+            onClick={() => setQuery('DC Security Breach Protection Amendment Act of 2019')}
             className="text-sm text-indigo-600 hover:text-indigo-800 font-medium transition-colors"
           >
             Try an example
@@ -85,7 +85,7 @@ export default function SearchCite() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="e.g., 'Roe v. Wade' or 'Clean Air Act'"
-              className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all font-sans text-slate-700"
+              className="w-full pl-12 pr-4 py-3 rounded-xl border border-slate-300/85 bg-white/82 backdrop-blur-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all font-sans text-slate-700"
             />
           </div>
           <button
@@ -104,17 +104,17 @@ export default function SearchCite() {
       {results.length > 0 && (
         <div className="space-y-6">
           <h3 className="text-lg font-semibold text-slate-800 flex items-center gap-2 px-2">
-            <BookOpen className="w-5 h-5 text-slate-500" />
+            <BookOpen className="w-5 h-5 text-slate-600" />
             Search Results ({results.length})
           </h3>
           <div className="grid gap-6">
             {results.map((result, idx) => (
-              <div key={idx} className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8 hover:shadow-md transition-shadow">
+              <div key={idx} className="bg-white/80 backdrop-blur-md rounded-2xl shadow-[0_18px_50px_rgba(15,23,42,.14)] border border-white/55 p-6 md:p-8 hover:shadow-[0_22px_60px_rgba(15,23,42,.16)] transition-shadow">
                 <div className="flex justify-between items-start gap-4 mb-4">
                   <h4 className="text-xl font-semibold text-slate-900 leading-tight">
                     {result.title}
                   </h4>
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 flex-wrap justify-end">
                     <div className={`flex items-center gap-1.5 px-3 py-1 rounded-lg border text-xs font-semibold ${getConfidenceColor(result.confidence)}`}>
                       {getConfidenceIcon(result.confidence)}
                       {result.confidence}
@@ -124,7 +124,7 @@ export default function SearchCite() {
                         href={result.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-indigo-600 hover:text-indigo-800 flex items-center gap-1 text-sm font-medium whitespace-nowrap bg-indigo-50 px-3 py-1.5 rounded-lg transition-colors"
+                        className="text-indigo-600 hover:text-indigo-800 flex items-center gap-1 text-sm font-medium whitespace-nowrap bg-indigo-50/90 px-3 py-1.5 rounded-lg transition-colors"
                       >
                         View Source
                         <ExternalLink className="w-4 h-4" />
@@ -134,12 +134,12 @@ export default function SearchCite() {
                 </div>
 
                 <div className="mb-6 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100 text-slate-600 uppercase tracking-wider">
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-slate-100/90 text-slate-600 uppercase tracking-wider">
                     <FileText className="w-3.5 h-3.5" />
                     {result.sourceType}
                   </span>
                   {result.modelUsed && (
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-bold bg-slate-100 text-slate-500 uppercase tracking-wider border border-slate-200">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[10px] font-bold bg-slate-100/90 text-slate-500 uppercase tracking-wider border border-slate-200">
                       {result.modelUsed}
                     </span>
                   )}
@@ -148,7 +148,7 @@ export default function SearchCite() {
                       href={result.referenceRule.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-100 hover:bg-emerald-100 transition-colors group"
+                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium bg-emerald-50/92 text-emerald-700 border border-emerald-100 hover:bg-emerald-100 transition-colors group"
                     >
                       <Library className="w-3.5 h-3.5 text-emerald-500" />
                       Rule: {result.referenceRule.name}
@@ -159,7 +159,7 @@ export default function SearchCite() {
 
                 <div className="space-y-6">
                   {result.ambiguities && result.ambiguities.length > 0 && (
-                    <div className="p-4 bg-rose-50 border border-rose-100 rounded-xl">
+                    <div className="p-4 bg-rose-50/92 border border-rose-100 rounded-xl">
                       <h5 className="text-xs font-bold text-rose-700 uppercase tracking-wider mb-2 flex items-center gap-1.5">
                         <AlertTriangle className="w-3.5 h-3.5" />
                         Needs Verification
@@ -177,17 +177,13 @@ export default function SearchCite() {
 
                   <div>
                     <h5 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Summary</h5>
-                    <p className="text-slate-700 leading-relaxed text-sm">
-                      {result.summary}
-                    </p>
+                    <p className="text-slate-700 leading-relaxed text-sm">{result.summary}</p>
                   </div>
 
                   <div>
                     <h5 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-2">Bluebook Citation (Practitioner Mode)</h5>
-                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                      <p className="text-lg font-serif text-slate-900">
-                        {result.citation}
-                      </p>
+                    <div className="p-4 bg-slate-50/92 rounded-xl border border-slate-100">
+                      <p className="text-lg font-serif text-slate-900">{result.citation}</p>
                     </div>
                   </div>
                 </div>
